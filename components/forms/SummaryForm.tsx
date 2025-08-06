@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
-import { generateContent } from '@/lib/mockAI'
+import { generateContent } from '../../lib/mockAI'
 import { Sparkles } from 'lucide-react'
 import toast from 'react-hot-toast'
 

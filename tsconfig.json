@@ -19,6 +19,27 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "preserve",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./*"
+      ],
+      "@/components/*": [
+        "./components/*"
+      ],
+      "@/lib/*": [
+        "./lib/*"
+      ],
+      "@/utils/*": [
+        "./utils/*"
+      ],
+      "@/types/*": [
+        "./types/*"
+      ],
+      "@/app/*": [
+        "./app/*"
+      ]
+    },
     "incremental": true,
     "plugins": [
       {
@@ -28,6 +49,11 @@
   },
   "include": [
     "src",
+    "app",
+    "components",
+    "lib",
+    "utils",
+    "types",
     ".next/types/**/*.ts"
   ],
   "exclude": [

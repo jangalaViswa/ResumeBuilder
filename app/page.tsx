@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
-import Navigation from '@/components/Navigation'
+import Navigation from '../components/Navigation'
 import { ArrowRight, Sparkles, FileText, Download, Users, Zap, Shield, Globe } from 'lucide-react'
 
 export default function HomePage() {

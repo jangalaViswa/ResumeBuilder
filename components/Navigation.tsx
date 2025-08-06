@@ -2,7 +2,7 @@
 
 import React from 'react'
 import Link from 'next/link'
-import { useUser } from '@/app/providers'
+import { useUser } from '../app/providers'
 import { FileText, User, LogOut, Plus } from 'lucide-react'
 
 export default function Navigation() {

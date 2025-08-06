@@ -1,4 +1,4 @@
-import { Resume } from '@/types/Resume'
+import { Resume } from '../types/Resume'
 
 const RESUMES_KEY = 'ai-resume-builder-resumes'
 const TEMPLATES_KEY = 'ai-resume-builder-templates'
