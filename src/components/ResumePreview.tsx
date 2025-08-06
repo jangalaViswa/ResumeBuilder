@@ -111,12 +111,6 @@ const ResumePreview: React.FC<ResumePreviewProps> = ({ resume }) => {
         <section className="resume-section">
           <h2 className="section-title">Skills</h2>
           <div className="skills-grid">
-            {resume.skills.reduce((acc, skill) => {
-              const category = skill.category || 'General';
-              if (!acc[category]) acc[category] = [];
-              acc[category].push(skill);
-              return acc;
-            }, {} as Record<string, typeof resume.skills>)}
             {Object.entries(
               resume.skills.reduce((acc, skill) => {
                 const category = skill.category || 'General';

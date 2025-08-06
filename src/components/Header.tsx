@@ -1,7 +1,12 @@
 import React from 'react';
+import { exportToPDF } from '../utils/pdfExport';
 import './Header.css';
 
 const Header: React.FC = () => {
+  const handleExportPDF = () => {
+    exportToPDF('resume-preview', 'my-resume.pdf');
+  };
+
   return (
     <header className="header">
       <div className="container">
@@ -14,7 +19,7 @@ const Header: React.FC = () => {
             <button className="btn btn-outline">
               Templates
             </button>
-            <button className="btn btn-primary">
+            <button className="btn btn-primary" onClick={handleExportPDF}>
               Export PDF
             </button>
           </nav>
