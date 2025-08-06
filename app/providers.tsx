@@ -1,16 +1,63 @@
 'use client'
 
-import React from 'react'
-import { SessionProvider } from 'next-auth/react'
+import React, { createContext, useContext, useState, useEffect } from 'react'
+
+// Simple user context for basic version
+interface User {
+  id: string
+  name: string
+  email: string
+}
+
+interface UserContextType {
+  user: User | null
+  login: (email: string, name: string) => void
+  logout: () => void
+}
+
+const UserContext = createContext<UserContextType | undefined>(undefined)
+
+export function useUser() {
+  const context = useContext(UserContext)
+  if (context === undefined) {
+    throw new Error('useUser must be used within a UserProvider')
+  }
+  return context
+}
 
 interface ProvidersProps {
   children: React.ReactNode
 }
 
 export function Providers({ children }: ProvidersProps) {
+  const [user, setUser] = useState<User | null>(null)
+
+  useEffect(() => {
+    // Load user from localStorage on mount
+    const savedUser = localStorage.getItem('user')
+    if (savedUser) {
+      setUser(JSON.parse(savedUser))
+    }
+  }, [])
+
+  const login = (email: string, name: string) => {
+    const newUser = {
+      id: Date.now().toString(),
+      email,
+      name
+    }
+    setUser(newUser)
+    localStorage.setItem('user', JSON.stringify(newUser))
+  }
+
+  const logout = () => {
+    setUser(null)
+    localStorage.removeItem('user')
+  }
+
   return (
-    <SessionProvider>
+    <UserContext.Provider value={{ user, login, logout }}>
       {children}
-    </SessionProvider>
+    </UserContext.Provider>
   )
 } 
